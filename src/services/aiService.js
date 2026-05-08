@@ -2,30 +2,26 @@ import { buildPrompt, parseAIResponse, validateReactCode, SYSTEM_PROMPT } from '
 
 export const generateReactComponent = async (userDescription, apiKey) => {
   if (!apiKey) {
-    throw new Error('API key is required. Please set your OpenAI API key.');
+    throw new Error('API key is required. Please set your Anthropic Claude API key.');
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 2500,
         messages: [
           {
-            role: 'system',
-            content: SYSTEM_PROMPT
-          },
-          {
             role: 'user',
-            content: buildPrompt(userDescription)
+            content: `${SYSTEM_PROMPT}\n\n${buildPrompt(userDescription)}`
           }
-        ],
-        temperature: 0.7,
-        max_tokens: 2500
+        ]
       })
     });
 
@@ -35,7 +31,7 @@ export const generateReactComponent = async (userDescription, apiKey) => {
     }
 
     const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
+    const aiResponse = data.content[0].text;
     
     const parsed = parseAIResponse(aiResponse);
     
