@@ -1,0 +1,54 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.code-display {
+  background: white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    background: $bg-light;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__title {
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__btn {
+    @include button-secondary;
+    font-size: $font-size-small;
+    padding: $spacing-sm $spacing-md;
+
+    &--copied {
+      background-color: #e8f5e9;
+      color: $success-color;
+      border-color: $success-color;
+    }
+  }
+
+  &__pre {
+    overflow-x: auto;
+    margin: 0;
+  }
+
+  &__code {
+    display: block;
+    padding: $spacing-xl;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    background: #1e1e1e;
+    color: #d4d4d4;
+  }
+}

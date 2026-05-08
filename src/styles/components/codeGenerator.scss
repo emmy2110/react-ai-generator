@@ -1,0 +1,130 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.code-generator {
+  @include flex-column;
+  min-height: 100vh;
+
+  &__header {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    color: white;
+    padding: $spacing-2xl;
+    @include flex-between;
+    gap: $spacing-lg;
+
+    @include responsive-tablet {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__header-content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: $font-size-large;
+    opacity: 0.9;
+  }
+
+  &__main {
+    flex: 1;
+    padding: $spacing-2xl;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include responsive-tablet {
+      padding: $spacing-lg;
+    }
+
+    @include responsive-mobile {
+      padding: $spacing-md;
+    }
+  }
+
+  &__input-section {
+    background: white;
+    border-radius: $radius-lg;
+    padding: $spacing-2xl;
+    box-shadow: $shadow-md;
+    margin-bottom: $spacing-2xl;
+
+    @include responsive-tablet {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__error {
+    background-color: #ffebee;
+    border-left: 4px solid $danger-color;
+    padding: $spacing-lg;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-2xl;
+    animation: slideDown 300ms ease-out;
+  }
+
+  &__error-title {
+    font-weight: 600;
+    color: $danger-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__error-message {
+    color: #c62828;
+    font-size: $font-size-small;
+  }
+
+  &__output {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+    margin-bottom: $spacing-2xl;
+
+    @include responsive-tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__output-section {
+    background: white;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+  }
+
+  &__code-section {
+    @include flex-column;
+    gap: $spacing-lg;
+  }
+
+  &__usage {
+    grid-column: 1 / -1;
+    background: white;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+    box-shadow: $shadow-md;
+  }
+
+  &__usage-title {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-lg;
+    color: $text-primary;
+  }
+
+  &__footer {
+    background: $bg-light;
+    padding: $spacing-lg;
+    text-align: center;
+    color: $text-secondary;
+    border-top: 1px solid $border-color;
+    margin-top: $spacing-2xl;
+  }
+}

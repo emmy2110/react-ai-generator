@@ -1,0 +1,109 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.settings {
+  position: relative;
+
+  &__toggle {
+    @include button-secondary;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: $font-size-base;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    min-width: 350px;
+    margin-top: $spacing-md;
+    z-index: 1000;
+    animation: slideDown 300ms ease-out;
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $border-light;
+  }
+
+  &__title {
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__close {
+    @include button-base;
+    background: none;
+    color: $text-secondary;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    font-size: $font-size-large;
+
+    &:hover {
+      color: $text-primary;
+      background-color: $bg-light;
+    }
+  }
+
+  &__form {
+    padding: $spacing-lg;
+  }
+
+  &__group {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    color: $text-primary;
+    font-size: $font-size-small;
+  }
+
+  &__input {
+    @include input-base;
+    width: 100%;
+
+    &::placeholder {
+      color: $text-light;
+    }
+  }
+
+  &__hint {
+    font-size: $font-size-small;
+    color: $text-secondary;
+    margin-top: $spacing-sm;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__btn {
+    @include button-primary;
+    width: 100%;
+    margin-top: $spacing-md;
+
+    &--saved {
+      background: linear-gradient(135deg, $success-color, darken($success-color, 10%));
+    }
+  }
+}
